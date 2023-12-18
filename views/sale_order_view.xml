@@ -58,4 +58,40 @@
             </xpath>    
         </field>
     </record>
+
+
+    <record id="res_partner_kanban_view_phone" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//ul[1]//li[5]" position="after">
+                <li t-if="record.phone.raw_value" class="o_text_overflow"><field name="phone"/></li>
+            </xpath>    
+        </field>
+    </record>
+
+    <!-- mamun vai - report template inheritance code -->
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_description" class="text-start">Products</th>
+        </xpath>
+        <xpath expr="//th[@name='th_quantity']" position="after">
+            <th name="th_bonus_quantity" class="text-end">Bonus Quantity</th>
+        </xpath>
+        <xpath expr="//td[@name='td_quantity']" position="after">
+            <td name="td_bonus_quantity" class="text-end">
+                <span t-field="line.product_uom_qty"/>
+            </td>
+        </xpath>
+    </template>
+    <!-- mamun vai - report template inheritance code -->
+
+    <template id="report_saleorder_document_inherit_task" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_quantity']" position="replace">
+            <th name="th_quantity" class="text-end">Quantity - inherited by Suprodip Sarkar</th>
+        </xpath>
+    </template>
+
+
 </odoo>

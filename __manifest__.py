@@ -12,7 +12,7 @@
     'website': 'https://www.odoo.com/app/invoicing',
     'depends' : ['sale', 'stock'],
     'data': [
-        # 'views/menu.xml',
+        'views/menu.xml',
         # 'security/ir.model.access.csv',
         'views/sale_order_view.xml',
         # 'views/game_view.xml',
