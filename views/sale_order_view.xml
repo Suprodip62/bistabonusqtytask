@@ -59,7 +59,7 @@
         </field>
     </record>
 
-
+    <!-- mamun vai - kanban inheritance code -->
     <record id="res_partner_kanban_view_phone" model="ir.ui.view">
         <field name="name">res.partner.form</field>
         <field name="model">res.partner</field>
@@ -70,6 +70,8 @@
             </xpath>    
         </field>
     </record>
+    <!-- mamun vai - kanban inheritance code -->
+
 
     <!-- mamun vai - report template inheritance code -->
     <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
@@ -87,11 +89,27 @@
     </template>
     <!-- mamun vai - report template inheritance code -->
 
+    <!-- report inheritance task -->
     <template id="report_saleorder_document_inherit_task" inherit_id="sale.report_saleorder_document">
         <xpath expr="//th[@name='th_quantity']" position="replace">
             <th name="th_quantity" class="text-end">Quantity - inherited by Suprodip Sarkar</th>
         </xpath>
     </template>
+
+    <!-- kanban view inheritance task -->
+    <record id="res_partner_kanban_view_website" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='phone']" position="after">
+                <field name="website"/>
+            </xpath>  
+            <xpath expr="//ul[1]//li[5]" position="after">
+                <li t-if="record.website.raw_value" class="o_text_overflow"><field name="website"/></li><br/>
+            </xpath>    
+        </field>
+    </record>
 
 
 </odoo>
